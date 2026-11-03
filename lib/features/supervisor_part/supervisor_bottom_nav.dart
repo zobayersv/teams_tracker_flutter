@@ -1,9 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:location_tracker/features/employee_part/attendence_screen/presentation/attendance_list_screen.dart';
-import 'package:location_tracker/features/employee_part/profile_screen/presentation/profile_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_attendence_screen/supervisor_team_attendance_screen.dart';
 import 'package:location_tracker/features/supervisor_part/supervisor_home_screen/presentation/supervisor_home_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_profile_screen/supervisor_profile_screen.dart';
 import 'package:location_tracker/features/supervisor_part/supervisor_sales_screen/supervisor_team_sales_screen.dart';
 
 typedef SupervisorNavigationWrapper = SupervisorBottomNav;
@@ -24,10 +24,10 @@ class _SupervisorBottomNavState extends State<SupervisorBottomNav> {
   void initState() {
     super.initState();
     _pages = [
-      const SupervisorHomeScreen(), // Tab 0: Supervisor Team Home Dashboard
-      const SupervisorTeamSalesScreen(), // Tab 1: Team Sales & Shop Orders
-      const AttendanceListScreen(), // Tab 2: Team Attendance Logs & GPS Audit
-      const ProfileScreen(),
+      const SupervisorHomeScreen(),
+      const SupervisorTeamSalesScreen(),
+      const SupervisorTeamAttendanceScreen(),
+      const SupervisorProfileScreen(),
     ];
   }
 
