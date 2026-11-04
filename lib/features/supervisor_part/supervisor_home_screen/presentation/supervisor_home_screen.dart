@@ -775,7 +775,7 @@ class _SupervisorHomeScreenState extends State<SupervisorHomeScreen> {
         'icon': Icons.account_balance_wallet_outlined,
         'color': const Color(0xFF047857), // Forest Green
         'badge': '৳215K',
-        'action': 'view_leave_request',
+        'action': 'view_collection',
       },
       {
         'title': 'View Leave Request',
@@ -799,7 +799,7 @@ class _SupervisorHomeScreenState extends State<SupervisorHomeScreen> {
         'icon': Icons.inventory_2_outlined,
         'color': const Color(0xFF047857),
         'badge': null,
-        'action': 'catalog',
+        'action': 'view_catalog',
       },
     ];
 
@@ -821,16 +821,18 @@ class _SupervisorHomeScreenState extends State<SupervisorHomeScreen> {
           onTap: () {
             if (item['action'] == 'dashboard') {
               NavigationService.navigateTo(Routes.supervisorDashboard);
-            } else if (item['action'] == 'take_order') {
-              NavigationService.navigateTo(Routes.takeOrder);
-            } else if (item['action'] == 'collect_due') {
-              NavigationService.navigateTo(Routes.collectDue);
-            } else if (item['action'] == 'catalog') {
-              NavigationService.navigateTo(Routes.catalogScreen);
-            } else if (item['action'] == 'tour_plan') {
-              NavigationService.navigateTo(Routes.tourPlanScreen);
-            } else if (item['action'] == 'leave_app') {
-              NavigationService.navigateTo(Routes.leaveScreen);
+            } else if (item['action'] == 'view_employee') {
+              NavigationService.navigateTo(Routes.supervisorViewEmployee);
+            } else if (item['action'] == 'view_customer') {
+              NavigationService.navigateTo(Routes.supervisorViewCustomer);
+            } else if (item['action'] == 'view_collection') {
+              NavigationService.navigateTo(Routes.supervisorViewCollection);
+            } else if (item['action'] == 'view_leave_request') {
+              NavigationService.navigateTo(Routes.supervisorViewLeave);
+            } else if (item['action'] == 'view_tour_request') {
+              NavigationService.navigateTo(Routes.supervisorViewTour);
+            } else if (item['action'] == 'view_catalog') {
+              NavigationService.navigateTo(Routes.supervisorViewCatalog);
             }
           },
           borderRadius: BorderRadius.circular(18),

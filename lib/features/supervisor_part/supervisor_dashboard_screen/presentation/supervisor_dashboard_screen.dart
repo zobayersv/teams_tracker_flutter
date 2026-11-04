@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:location_tracker/helpers/all_routes.dart';
+import 'package:location_tracker/helpers/navigation_service.dart';
 
 class SupervisorDashboardScreen extends StatefulWidget {
   const SupervisorDashboardScreen({super.key});
@@ -50,6 +52,7 @@ class _SupervisorDashboardScreenState extends State<SupervisorDashboardScreen> {
       'icon': Icons.receipt_long_rounded,
       'color': const Color(0xFFE11D48), // Rose Red
       'badge': null,
+      'action': 'expense',
     },
     {
       'id': 'catalog',
@@ -58,6 +61,7 @@ class _SupervisorDashboardScreenState extends State<SupervisorDashboardScreen> {
       'icon': Icons.inventory_2_outlined,
       'color': const Color(0xFF0284C7), // Sky Blue
       'badge': null,
+      'action': 'catalog',
     },
     {
       'id': 'tour_plan',
@@ -66,6 +70,7 @@ class _SupervisorDashboardScreenState extends State<SupervisorDashboardScreen> {
       'icon': Icons.map_outlined,
       'color': const Color(0xFF7C3AED), // Violet
       'badge': '3 Pending',
+      'action': 'tour',
     },
     {
       'id': 'leave_apply',
@@ -74,6 +79,7 @@ class _SupervisorDashboardScreenState extends State<SupervisorDashboardScreen> {
       'icon': Icons.event_note_rounded,
       'color': const Color(0xFFF59E0B), // Amber
       'badge': '2 New',
+      'action': 'leave',
     },
     {
       'id': 'view_reports',
@@ -82,6 +88,7 @@ class _SupervisorDashboardScreenState extends State<SupervisorDashboardScreen> {
       'icon': Icons.assessment_outlined,
       'color': const Color(0xFF0F766E), // Dark Cyan
       'badge': 'Export',
+      'action': 'reports',
     },
     {
       'id': 'learning_points',
@@ -90,22 +97,23 @@ class _SupervisorDashboardScreenState extends State<SupervisorDashboardScreen> {
       'icon': Icons.menu_book_rounded,
       'color': const Color(0xFF4338CA), // Indigo
       'badge': 'Docs',
+      'action': 'learning',
     },
   ];
 
-  void _onModuleTap(Map<String, dynamic> module) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Navigating to ${module['title']}...',
-          style: GoogleFonts.outfit(),
-        ),
-        backgroundColor: const Color(0xFF059669),
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      ),
-    );
-  }
+  // void _onModuleTap(Map<String, dynamic> module) {
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     SnackBar(
+  //       content: Text(
+  //         'Navigating to ${module['title']}...',
+  //         style: GoogleFonts.outfit(),
+  //       ),
+  //       backgroundColor: const Color(0xFF059669),
+  //       behavior: SnackBarBehavior.floating,
+  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -421,7 +429,45 @@ class _SupervisorDashboardScreenState extends State<SupervisorDashboardScreen> {
         final String? badge = item['badge'] as String?;
 
         return InkWell(
-          onTap: () => _onModuleTap(item),
+          onTap: () {
+            if (item['action'] == 'expense') {
+              NavigationService.navigateTo(Routes.supervisorExpenseScreen);
+            } else if (item['action'] == 'catalog') {
+              NavigationService.navigateTo(Routes.supervisorViewCatalog);
+            } else if (item['action'] == 'tour') {
+              NavigationService.navigateTo(Routes.supervisorTourScreen);
+            } else if (item['action'] == 'leave') {
+              NavigationService.navigateTo(Routes.supervisorLeaveApplyScreen);
+            } else if (item['action'] == 'reports') {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    'Coming Soon...',
+                    style: GoogleFonts.outfit(color: Colors.white),
+                  ),
+                  backgroundColor: const Color(0xFF059669),
+                  behavior: SnackBarBehavior.floating,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              );
+            } else if (item['action'] == 'learning') {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    'Coming Soon...',
+                    style: GoogleFonts.outfit(color: Colors.white),
+                  ),
+                  backgroundColor: const Color(0xFF059669),
+                  behavior: SnackBarBehavior.floating,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              );
+            }
+          },
           borderRadius: BorderRadius.circular(20),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
