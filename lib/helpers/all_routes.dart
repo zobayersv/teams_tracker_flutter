@@ -12,7 +12,16 @@ import 'package:location_tracker/features/employee_part/profile_screen/presentat
 import 'package:location_tracker/features/employee_part/profile_screen/presentation/notification_screen.dart';
 import 'package:location_tracker/features/employee_part/tour_plan_screen/presentation/tour_plan_screen.dart';
 import 'package:location_tracker/features/supervisor_part/supervisor_bottom_nav.dart';
-import 'package:location_tracker/features/supervisor_part/supervisor_home_screen/presentation/supervisor_dashboard_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_dashboard_screen/presentation/supervisor_dashboard_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_dashboard_screen/presentation/supervisor_expense_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_dashboard_screen/presentation/supervisor_leave_apply_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_dashboard_screen/presentation/supervisor_tour_plan_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_home_screen/presentation/supervisor_view_catalog_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_home_screen/presentation/supervisor_view_collection_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_home_screen/presentation/supervisor_view_customer_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_home_screen/presentation/supervisor_view_employee_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_home_screen/presentation/supervisor_view_leave_screen.dart';
+import 'package:location_tracker/features/supervisor_part/supervisor_home_screen/presentation/supervisor_view_tour_screen.dart';
 
 enum RouteTransitionType { smoothFadeScale, slideRight, slideUp, cupertino }
 
@@ -40,7 +49,20 @@ final class Routes {
   static const catalogScreen = '/catalogScreen';
   static const tourPlanScreen = '/tourPlanScreen';
   static const leaveScreen = '/leaveScreen';
+
+  //* for supervisor
   static const supervisorDashboard = '/supervisorDashboard';
+  static const supervisorViewEmployee = '/supervisorViewEmployee';
+  static const supervisorViewCustomer = "/supervisorViewCustomer";
+  static const supervisorViewCollection = "/supervisorViewCollection";
+  static const supervisorViewLeave = "/supervisorViewLeave";
+  static const supervisorViewTour = "/supervisorViewTour";
+  static const supervisorViewCatalog = "/supervisorViewCatalog";
+
+  //* for supervisor dashboard
+  static const supervisorExpenseScreen = '/supervisorExpense';
+  static const supervisorTourScreen = '/supervisorTourScreen';
+  static const supervisorLeaveApplyScreen = '/supervisorLeaveApplyScreen';
 }
 
 final class RouteGenerator {
@@ -126,9 +148,66 @@ final class RouteGenerator {
           settings: settings,
         );
 
+      //* ########################################
+      // * Supervisor Section
+      //* ########################################
       case Routes.supervisorDashboard:
         return _buildSmoothRoute(
           widget: const SupervisorDashboardScreen(),
+          settings: settings,
+        );
+
+      case Routes.supervisorViewEmployee:
+        return _buildSmoothRoute(
+          widget: const SupervisorViewEmployeeScreen(),
+          settings: settings,
+        );
+
+      case Routes.supervisorViewCustomer:
+        return _buildSmoothRoute(
+          widget: const SupervisorViewCustomerScreen(),
+          settings: settings,
+        );
+
+      case Routes.supervisorViewCollection:
+        return _buildSmoothRoute(
+          widget: const SupervisorViewCollectionScreen(),
+          settings: settings,
+        );
+
+      case Routes.supervisorViewLeave:
+        return _buildSmoothRoute(
+          widget: const SupervisorViewLeaveScreen(),
+          settings: settings,
+        );
+
+      case Routes.supervisorViewTour:
+        return _buildSmoothRoute(
+          widget: const SupervisorViewTourScreen(),
+          settings: settings,
+        );
+
+      case Routes.supervisorViewCatalog:
+        return _buildSmoothRoute(
+          widget: const SupervisorViewCatalogScreen(),
+          settings: settings,
+        );
+
+      case Routes.supervisorExpenseScreen:
+        return _buildSmoothRoute(
+          widget: const SupervisorViewExpenseScreen(),
+          settings: settings,
+        );
+
+      case Routes.supervisorTourScreen:
+        return _buildSmoothRoute(
+          widget: const SupervisorTourPlanScreen(),
+          settings: settings,
+        );
+
+      case Routes.supervisorLeaveApplyScreen:
+        return _buildSmoothRoute(
+          widget: const SupervisorLeaveApplyScreen(),
           settings: settings,
         );
 
